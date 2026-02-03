@@ -14,7 +14,6 @@ class _HomePageState extends State<HomePage> {
   final List toDoList = [
     ['Learn Flutter', false],
     ['Play Valorant', false],
-    ['Die', false],
   ];
 
   void checkBoxChanged(int index) {
@@ -27,6 +26,12 @@ class _HomePageState extends State<HomePage> {
     setState(() {
       toDoList.add([_controller.text, false]);
       _controller.clear();
+    });
+  }
+
+  void deleteTask(int index) {
+    setState(() {
+      toDoList.removeAt(index);
     });
   }
 
@@ -48,6 +53,7 @@ class _HomePageState extends State<HomePage> {
             taskName: toDoList[index][0],
             taskCompleted: toDoList[index][1],
             onChanged: (value) => checkBoxChanged(index),
+            deleteFunction: (context) => deleteTask(index),
           );
         },
       ),
@@ -61,7 +67,7 @@ class _HomePageState extends State<HomePage> {
                 child: TextField(
                   controller: _controller,
                   decoration: InputDecoration(
-                    hintText: 'Add new ToDo...',
+                    hintText: 'Add a new ToDo...',
                     filled: true,
                     fillColor: Colors.deepPurple.shade200,
                     enabledBorder: OutlineInputBorder(
