@@ -42,6 +42,34 @@ class _HomePageState extends State<HomePage> {
           );
         },
       ),
+      floatingActionButton: Padding(
+        padding: const EdgeInsets.fromLTRB(14, 0, 0, 0),
+        child: Row(
+          children: [
+            Expanded(
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                child: TextField(
+                  decoration: InputDecoration(
+                    hintText: 'Add new ToDo...',
+                    filled: true,
+                    fillColor: Colors.deepPurple.shade200,
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.deepPurple),
+                      borderRadius: BorderRadius.circular(16),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.white70),
+                      borderRadius: BorderRadius.circular(16),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            FloatingActionButton(onPressed: () {}, child: Icon(Icons.add)),
+          ],
+        ),
+      ),
     );
   }
 }
